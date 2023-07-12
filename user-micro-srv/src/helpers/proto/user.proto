@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package user;
+
+service UserService{
+    rpc GetUserById( getUserByIdRequest) returns ( getUserByIdResponse);
+    rpc CreateUser( createUserRequest)   returns ( createUserRequest) ;
+    rpc CreateProfile (createProfileRequest) returns (createProfileResponse);
+}
+
+message getUserByIdRequest {
+  int32 id=1;
+}
+
+message getUserByIdResponse {
+   User user =1;
+}
+
+message User {
+    int32 id = 1;
+    string email = 2;
+    string password=3;
+    Profile profile =4;
+}
+
+
+
+//createUser
+message createUserRequest {
+  string email =1;
+  string password= 2 ;
+}
+message createUserResponse {
+  
+}
+
+
+
+//createProfile
+message Profile {
+  string firstname=1;
+  string lastname=2;
+  int32 age=3;
+  string dob=4 ;
+  int32 id=5;
+  int32 userId=6;
+
+}
+message createProfileRequest {
+  string firstname=1;
+  string lastname =2;
+  int32 age=3;
+  string dob=4 ;
+  int32 userId=5;
+}
+message createProfileResponse {
+  User user =1;
+}
+
